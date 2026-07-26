@@ -15,3 +15,4 @@ Documentation on the Arduino Uno can be found [here](https://docs.arduino.cc/ret
 
 # First push
 - this is the updates
+- uploaded sketch
