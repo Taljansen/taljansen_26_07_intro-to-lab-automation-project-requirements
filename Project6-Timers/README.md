@@ -3,11 +3,13 @@
 1. Understand the use of timers in Arduino and problems that they can solve
 
 ## Write a program that does the following:
-- Turn on an LED on pin 4 when a button is pressed using interrupts
-- The LED should turn off after 5 seconds
-- Do not use a delay() function here. Please use the system clock to measure the time. look for the millis() function in the Arduino reference.
-Test the code and make sure it works as expected
+- Turn on an LED on pin 4 when a button is pressed using interrupts ✓
+- The LED should turn off after 5 seconds ✓
+- Do not use a delay() function here. Please use the system clock to measure the time. look for the millis() function in the Arduino reference. ✓
+Test the code and make sure it works as expected ✓
 paste a screen shot from the logic analyzer below:
+
+![5 second pulse using millis](p6_millis_5s.png)
  
 ## update the code to add a delay in the loop function
 - Add the same for loop as in the previous exercise to simulate a long process. Does the LED still turn off after 5 seconds? Why or why not?
