@@ -17,7 +17,7 @@ void setup() {
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(buttonPin, INPUT); //hole 6, youre an input
   pinMode(ledPin, OUTPUT); // hole 4, youre output, here voltage goes out, this lights the LED
-  Serial.begin(9600); // 9600 is the speed — 9600 bits per second.
+  Serial.begin(9600); // 9600 is the speed — 9600 bits per second. At 9600 bits per second = 156 seconds ≈ 2.6 minutes
   pinMode(interruptPin, INPUT); // Hole 2: also an input. Your jumper wire means holes 6 and 2 now receive the identical signal from the button.
   attachInterrupt(digitalPinToInterrupt(interruptPin), buttonISR, CHANGE);
 }
