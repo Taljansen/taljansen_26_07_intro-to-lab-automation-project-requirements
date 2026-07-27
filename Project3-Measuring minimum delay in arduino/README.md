@@ -41,6 +41,12 @@ run code:
 - Measure pulse width. What is the minimum time that the signal is HIGH and LOW? this is the overhead.
 - Take screenshots and add them to the README below.
 
+--> With both delay() lines removed, the LED pin stays HIGH for about 3.5 µs
+and LOW for about 3.9 µs (period ~7.4 µs, ~135 kHz). This is the overhead:
+the time the digitalWrite() commands and one loop() cycle take by themselves.
+Even with zero delay, the pulse can never be shorter than this.
+
+
 ## even shorter blink
 
 - delay() is limited to 1 ms. Find a function that delays 1 microsecond.
