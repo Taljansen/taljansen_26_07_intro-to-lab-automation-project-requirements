@@ -18,6 +18,15 @@ void setup() {
 }
 
 void loop() {
+  volatile long dummy = 0; // actually check the status of this variable every single loop, otherwise compiler skips things that arent affecting
+  long i = 0;
+  for (i = 0; i < 2000000; i++) {
+    dummy = dummy + 1;
+  }
+
+  Serial.print("dummy: ");
+  Serial.println(dummy);
+
   Serial.print("Time: ");
   myTime = millis();
 

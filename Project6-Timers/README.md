@@ -7,14 +7,19 @@
 - The LED should turn off after 5 seconds ✓
 - Do not use a delay() function here. Please use the system clock to measure the time. look for the millis() function in the Arduino reference. ✓
 Test the code and make sure it works as expected ✓
-paste a screen shot from the logic analyzer below:
+paste a screen shot from the logic analyzer below: ✓
 
 ![5 second pulse using millis](p6_millis_5s.png)
  
 ## update the code to add a delay in the loop function
-- Add the same for loop as in the previous exercise to simulate a long process. Does the LED still turn off after 5 seconds? Why or why not?
-answer here: __________
-add a screen shot from the logic analyzer below:
+- Add the same for loop as in the previous exercise to simulate a long process. Does the LED still turn off after 5 seconds? Why or why not?✓
+
+answer here: 
+
+add a screen shot from the logic analyzer below: ✓
+
+![x](x.png)
+
 
 ## Write a second program. The proper way to solve this problem is to use a timer
 - install package mstimer2 from the library manager
