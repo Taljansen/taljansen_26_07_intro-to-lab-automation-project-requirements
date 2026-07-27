@@ -46,14 +46,13 @@ start of a pulse.
 - play with the scopy parameters until you can see the separate blinks. Which parameter(s) do you need to change?
 
 --> Sample rate and number of samples. For 1 ms pulses, 100 ksps with 1 k samples gives
-a 10 ms window to show several complete cycles.
+a 10 ms window to show several cycles.
 
 - use cursors and sample rate to measure the pulse width
 - take screenshots and add them to the README below.
 
 --> Measured with cursors: dt = 1.019 ms, 1/dt = 981.7 Hz. That is the 1 ms
-requested delay plus a small amount of overhead. At 100 ksps one sample is 10 us,
-so the resolution is +/- 10 us.
+requested delay plus a small overhead. 
 
 ![1 ms pulse](p3_1_delay1ms.png)
 
@@ -76,12 +75,8 @@ delay the pulse can never be shorter than this.
 - Try different delays and measure the overhead.
 - Take screenshots and add them to the README below.
 
---> The function is delayMicroseconds(). Requesting delayMicroseconds(1) gives a
-measured pulse of 3.591 us (1/dt = 278.5 kHz), which is the same as the 3.728 us
-measured with no delay at all once cursor placement error is taken into account.
-So the 1 us that was asked for does not show up: it is much smaller than the
-~3.7 us the loop already costs. A requested delay only changes the pulse width
-once it is well above the overhead.
+--> The function is delayMicroseconds(). Requesting delayMicroseconds(1) gives a pulse of 3.591 us (1/dt = 278.5 kHz). So the 1 us that was asked for does not show up: it is much smaller than the
+~3.7 us the loop already takes. A requested delay only changes the pulse width once above the overhead.
 
 ![delayMicroseconds(1)](p3_3_micros.png)
 
@@ -96,10 +91,6 @@ Paste screenshots below.
 
 Comparison of AI changes if any:
 
---> Structure is unchanged: same setup() and loop(), same calls in the same
-order, no new functions. Two variables were added at the top,
-int ledPin = 4; and int delayTime = 1;, and the hard-coded values were replaced
-by them: LED_BUILTIN became ledPin, and the literal 1000 in both delay() calls
-became delayTime.
+--> Structure is unchanged
 
 ![alt text](<צילום מסך 2026-07-12 132359.png>)
