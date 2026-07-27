@@ -1,17 +1,17 @@
 # Project 1: Play with the Grove starter kit
 
-1. Familiarize yourself with the grove starter kit
-2. Start working with git
+1. Familiarize yourself with the grove starter kit 
+2. Start working with git 
 
 ## Play
- - Press buttons
- - enter mode menu by long press on button
- - change mode using potentiometer
- - enter mode by short press on button
+ - Press buttons 
+ - enter mode menu by long press on button 
+ - change mode using potentiometer 
+ - enter mode by short press on button 
 
 ## Explore
- - Test the light sensor with the phone flashlight
- - Test the sound sensor (microphone) by tapping lightly on it
+ - Test the light sensor with the phone flashlight 
+ - Test the sound sensor (microphone) by tapping lightly on it 
  - accelerometer - try to bring dot to center (or other side)
  - pressure - just note the pressure value below
  - temperature + humidity - when putting finger on the sensor temperature goes up

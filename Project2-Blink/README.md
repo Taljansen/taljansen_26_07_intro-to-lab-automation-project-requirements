@@ -22,3 +22,5 @@
 
 ## Results
 - LED blinks when: 
+
+the sketch runs: loop() sets pin 13 HIGH, waits 1000 ms, sets it LOW, waits 1000 ms, and repeats indefinitely. one second on and one second off.
