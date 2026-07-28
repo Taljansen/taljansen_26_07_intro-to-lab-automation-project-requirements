@@ -22,6 +22,5 @@ void setup() {
 void loop() {
   rotaryValue = analogRead(rotaryPin); //analogRead(A0) gives 0 - 1023 (voltage), 2.5 V - 512; 5 V - 1023
   Serial.println(rotaryValue);
-  delay(200);
-  pwmLed.write(rotaryValue/4);
+  pwmLed.write(rotaryValue/4); //rotaryValue/4 is a correct way to fix the range. 1023 ÷ 4 = 255. Same result as map().
 }
