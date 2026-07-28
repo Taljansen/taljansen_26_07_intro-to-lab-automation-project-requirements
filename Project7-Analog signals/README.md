@@ -50,7 +50,7 @@ Documentation on Servo [here](https://wiki.seeedstudio.com/Grove-Servo/)
 
 - connect analog 2 in adalm (dark blue) to digital 7 in arduino ✓
 - install Servo package if not already installed ✓
-- initialize Servo package with pin 7
+- initialize Servo package with pin 7 ✓
 - first look at the PWM signal in adalm. What frequency is the Servo package using?
 - connect to servo using D7 breakout (there is only one way to do this, ground - black wire - close to the grove led). 
 - turn rotary to turn the servo

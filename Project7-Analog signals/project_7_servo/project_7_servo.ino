@@ -1,11 +1,13 @@
+
+
 #include <Servo.h>
 
-void setup() {
-  // put your setup code here, to run once:
+Servo myServo;
 
+void setup() {
+  myServo.attach(7); //initialise pin 7
+  myServo.write(90);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
 }
