@@ -48,8 +48,8 @@ At 30 Hz the period grows from 20.7 ms to about 33 ms. The duty cycle range and 
 
 Documentation on Servo [here](https://wiki.seeedstudio.com/Grove-Servo/)
 
-- connect analog 2 in adalm (dark blue) to digital 7 in arduino
-- install Servo package if not already installed
+- connect analog 2 in adalm (dark blue) to digital 7 in arduino ✓
+- install Servo package if not already installed ✓
 - initialize Servo package with pin 7
 - first look at the PWM signal in adalm. What frequency is the Servo package using?
 - connect to servo using D7 breakout (there is only one way to do this, ground - black wire - close to the grove led). 
