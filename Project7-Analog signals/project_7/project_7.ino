@@ -16,7 +16,7 @@ int rotaryValue;
 
 void setup() {
   Serial.begin(9600);
-  pwmLed.begin(100);
+  pwmLed.begin(48); //so 48Hz is just the frequency, it directly translates to freq of the period of the cycles
 }
 
 void loop() {
