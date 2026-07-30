@@ -12,7 +12,7 @@ void setup() {
   fanServo.attach(SERVO_PIN);
   pinMode(FAN_PIN, OUTPUT);
   digitalWrite(FAN_PIN, HIGH);       // fan on
-}
+}a
 
 void loop() {
   float x = Accelerometer.readX();   // tilt: about -1 .. +1
