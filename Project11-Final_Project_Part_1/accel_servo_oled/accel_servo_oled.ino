@@ -1,51 +1,72 @@
-// accel_servo_oled - tilt steers the fan, angle shown on OLED
-// Layer 2 of the final project: accelerometer -> servo -> OLED
 
 #include <Servo.h>
 #include "Arduino_SensorKit.h"
 
-// --- pin constants (match the wiring: servo yellow on D3, fan on D7) ---
 const int SERVO_PIN = 3;
 const int FAN_PIN = 7;
+const int BUZZER_PIN = 5;
 
-Servo fanServo;
+const float X_MIN = -0.35;
+const float X_MAX =  0.35;
+
+const int ANGLE_MIN = 45;     // alarm below this  -> replace with YOUR measured threshold
+const int ANGLE_MAX = 135;    // alarm above this  -> replace with YOUR measured threshold
+
+Servo fanServo; // creates the servo object
 
 void setup() {
   Serial.begin(9600);          // serial line to the computer
-  Accelerometer.begin();       // wake the tilt sensor (I2C)
-  fanServo.attach(SERVO_PIN);  // servo listens on pin 3
+  Accelerometer.begin();       // tilt sensor (I2C)
+  fanServo.attach(SERVO_PIN);  // servo on pin 3
 
   pinMode(FAN_PIN, OUTPUT);
-  digitalWrite(FAN_PIN, HIGH); // fan on (set LOW while testing if you want quiet)
+  pinMode(BUZZER_PIN, OUTPUT);
 
-  // wake the screen, load the character dictionary
   Oled.begin();
-  Oled.setFlipMode(true);      // flip to false if text is upside down for you
+  Oled.setFlipMode(true);      // text orientation
   Oled.setFont(u8x8_font_chroma48medium8_r);
 }
 
 void loop() {
-  // 1. read tilt: roughly -1 .. +1
+
+  // map(value, fromLow, fromHigh, toLow, toHigh)
+  // output = (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
+  // from knob example: val = map(val, 0, 1023, 0, 180);  // scale for servo (0..180)
+  //
+  // with our measured range:
+  // output = (x − (−0.35)) × (180 − 0) / (0.35 − (−0.35)) + 0
+  //        = (x + 0.35) × 180 / 0.7
+  //        = (x + 0.35) × 257.14
+
   float x = Accelerometer.readX();
+  int angle = (x - X_MIN) * 180.0 / (X_MAX - X_MIN);   // map measured range -> 0..180
+  angle = constrain(angle, 0, 180);                    // clamp tilts beyond the measured range
 
-  // 2. translate to servo range: -1..+1  ->  0..180
-  int angle = (x + 1.0) * 90.0;
-  angle = constrain(angle, 0, 180);   // safety clamp
+  bool alarm = (angle < ANGLE_MIN) || (angle > ANGLE_MAX);
 
-  // 3. move the fan
+  if (alarm) {
+    analogWrite(BUZZER_PIN, 128);   // buzzer on (PWM ~50% duty = audible tone)
+    digitalWrite(FAN_PIN, LOW);     // fan stops
+  } else {
+    analogWrite(BUZZER_PIN, 0);     // buzzer silent
+    digitalWrite(FAN_PIN, HIGH);    // fan runs
+  }
+
   fanServo.write(angle);
 
-  // 4. show the angle on the little screen
   Oled.setCursor(0, 0);
   Oled.print("angle: ");
   Oled.print(angle);
-  Oled.print("   ");   // spaces erase leftover digits from longer numbers
+  Oled.print("   ");               // spaces erase leftover digits (180 -> 5 would show 580)
+  Oled.setCursor(0, 1);
+  Oled.print("buzzer: ");
+  Oled.print(alarm ? "ON " : "OFF");   // trailing space erases the F of OFF
 
-  // 5. tell the computer too
   Serial.print("x: ");
   Serial.print(x);
   Serial.print("   angle: ");
   Serial.println(angle);
 
   delay(50);   // ~20 updates per second
+
 }
