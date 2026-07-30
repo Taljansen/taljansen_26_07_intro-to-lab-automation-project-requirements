@@ -21,9 +21,9 @@
 
 ## Requirements
 Build a system that: 
-1. Operates the mini fan. The fan is on the servo motor.
-1. changes the angle of the servo motor (and the fan) based on the accelerometer sensor readings.
-2. displays the angle in the OLED display and buzzer state.
+1. Operates the mini fan. The fan is on the servo motor. ✓
+1. changes the angle of the servo motor (and the fan) based on the accelerometer sensor readings. ✓
+2. displays the angle in the OLED display and buzzer state. ( )
 3. if the angle exceeds a certain threshold, the buzzer should sound and the fan should stop. when returning to a valid angle, the buzzer should stop sounding and the fan should start again.
 4. log the time since program start, the angle (in degrees) and the buzzer state in a csv file (where should this be done, from the Arduino or the Python code?).
 4. Record a video of the system and add to the README below (by dragging it in while pressing the `shift` key).
